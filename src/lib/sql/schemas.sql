@@ -1,5 +1,5 @@
 CREATE TABLE parts(
-   part_id       INTEGER  NOT NULL PRIMARY KEY 
+   part_id      INTEGER AUTO_INCREMENT PRIMARY KEY
   ,part_desc     VARCHAR(25) NOT NULL
   ,part_sub      VARCHAR(1) NOT NULL
   ,part_src      VARCHAR(18) NOT NULL
@@ -11,6 +11,11 @@ CREATE TABLE parts(
   ,part_longlead VARCHAR(1) NOT NULL
   ,part_notes    VARCHAR(30)
 );
+
+ALTER TABLE parts AUTO_INCREMENT=100000;
+
+
+
 INSERT INTO parts(part_id,part_desc,part_sub,part_src,part_mfgnum,part_price,part_category,part_location,part_count,part_longlead,part_notes) VALUES (100001,'Base','N','Seattle Foundry','BC-BASE-0400','$14.75','Casting','Warehouse',580,'Y',NULL);
 INSERT INTO parts(part_id,part_desc,part_sub,part_src,part_mfgnum,part_price,part_category,part_location,part_count,part_longlead,part_notes) VALUES (100002,'Motor','N','Kysan','1443.1345-1','$9.77','Electronics','E-Bench',590,'N','Okay to substitute 1443.1345-2');
 INSERT INTO parts(part_id,part_desc,part_sub,part_src,part_mfgnum,part_price,part_category,part_location,part_count,part_longlead,part_notes) VALUES (100003,'Circuit board','N','PCA','BL MB v1.1','$4.33','Electronics','E-Bench',173,'Y',NULL);
@@ -48,14 +53,15 @@ INSERT INTO locations(loc_id, loc_name) VALUES (04, 'Warehouse');
 CREATE TABLE IF NOT EXISTS subassemblies (
   sub_id INTEGER PRIMARY KEY NOT NULL,
   sub_desc TEXT,
-  sub_sub VARCHAR(1) NOT NULL,
   sub_version TEXT,
-  sub_price DOUBLE,
+  sub_total_price DECIMAL(10,2),
   sub_qty INT,
-  sub_labormins INT
+  sub_labormins INTEGER,
+  sub_parent_id INTEGER,
+  sub_child_id INTEGER
   );
   
-INSERT INTO subassemblies (sub_id, sub_desc, sub_sub, sub_version, sub_price, sub_qty, sub_labormins)
+INSERT INTO subassemblies (sub_id, sub_desc, sub_parent_id, sub_version, sub_price, sub_qty, sub_labormins)
 VALUES(100015, 'Screw', 'N', '1.0', 1.85, 85, 5);
 
 
