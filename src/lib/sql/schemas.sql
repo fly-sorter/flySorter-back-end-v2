@@ -41,7 +41,7 @@ INSERT INTO parts(part_id,part_desc,part_sub,part_src,part_mfgnum,part_price,par
 
 CREATE TABLE locations (
   loc_id  INTEGER PRIMARY KEY NOT NULL,
-  loc_name text
+  loc_name VARCHAR(128)
   );
 
 INSERT INTO locations(loc_id, loc_name) VALUES (00, 'Unknown');
@@ -67,7 +67,7 @@ VALUES(100015, 'Screw', 'N', '1.0', 1.85, 85, 5);
 
 CREATE TABLE categories (
   cat_id INTEGER PRIMARY KEY NOT NULL,
-  cat_name TEXT
+  cat_name VARCHAR(128)
   );
 
 INSERT INTO categories(cat_id, cat_name) VALUES (00, 'Uncategorized');
